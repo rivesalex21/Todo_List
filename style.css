@@ -1,0 +1,73 @@
+:root {
+    --mheight: 600px;
+}
+
+html {
+    font-family: sans-serif
+}
+
+header {
+    text-align: left;
+    background-color: gray;
+    padding: 20px;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+    min-height: var(--mheight);
+}
+
+.options {
+    width: 30%;
+    background-color: lightcyan;
+    max-width: 200px;
+    min-width: 115px;
+}
+
+.projects-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px;
+    font-size: 12px;
+    height: 20px;
+    border-radius: 5px;
+    margin: 5px;
+    font-weight: bolder;
+}
+
+.projects-container:hover {
+    background-color: rgb(10, 100, 100)
+}
+
+.todo-lists {
+    width: 100%;
+    background: lightgoldenrodyellow;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.todo-lists > div {
+    padding: 3px 10px;
+}
+
+.main-right {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.action-items {
+    display: flex;
+    padding: 2px;
+    justify-content: right;
+    background-color: darkgray;
+    font-size: 12px;
+    gap: 5px;
+}
+
+.action-items div {
+    padding: 3px;
+}
