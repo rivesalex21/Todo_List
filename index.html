@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
@@ -28,13 +29,25 @@
 
             </div>
 
-            <div class="todo-lists">
-                <div>1) Create a simple website todo list skeleton</div>
-                <div>2) Apply some sort of javascript</div>
-                <div>3) Revise and follow SOLID foundation</div>
-                <div>4) Add additional functionality</div>
-                <div>5) Consider utilizing webpack</div>
+            <div class="todo-lists" id="todo">
+                <div id="list">
+                    
+                </div>
+                
+                <div class="add-task" id="addtask">
+                    <div> + Add Task</div>
+                </div>
+
+                <div id="inputfield">
+                    <div class="text-input">
+                        <input type="text" name="add-task" id="taskinput">
+                        <button id = 'btn-add-task'>Add Task</button>
+                        <button id = 'btn-cancel'>Cancel</button>
+                    </div>
+                </div>
+
             </div>
+
         </div>
 
     </div>
