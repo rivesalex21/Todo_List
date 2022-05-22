@@ -31,7 +31,6 @@ header {
     gap: 5px;
     padding: 5px;
     font-size: 12px;
-    height: 20px;
     border-radius: 5px;
     margin: 5px;
     font-weight: bolder;
@@ -93,4 +92,26 @@ header {
     display:flex;
     flex-direction: column;
     gap: 5px;
+}
+
+#inputfield-projects {
+}
+
+#text-input-column {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+}
+
+#taskinput-clm {
+    width: 70%
+}
+
+#projects {
+    display: flex;
+    flex-direction: column;
+}
+
+#projects div {
+    margin-left: auto;
 }
