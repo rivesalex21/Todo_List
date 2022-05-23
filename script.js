@@ -12,67 +12,87 @@ const add_btn_col = document.getElementById('btn-add-task-clm')
 // Create a class that can hold all the notes we provide to it.
 // The class name is going to be same as the project folder
 
-class projectList {
-    constructor() {
-        listOfProjects = []
-    }
-    addProject(todoList) {
-        this.listOfProjects.push(todoList)
-    }
+let projects = {}
+let currentFolder = 'Initial Folder'
+
+// Initializing the folder
+
+projects[currentFolder] = []
+function showInput() {
+    add_task.style.display = 'none'
+    input_field.style.display = 'block'
 }
 
-class todoList {
-    constructor () {
-        this.list = []
-        this.selected = false
+function addNote() {
+    if (task_input.value == '') {
+        return alert('Please enter a note in the text field')
     }
-    add(text) {
-        this.list.push(text)
-    }
-}
-
-
-
-let Sample_Project = new todoList
-Sample_Project.selected = true
-Sample_Project.add('This is a sample to do')
-
-
-
-function addNote(text) {
+    // Creating the text field.
+    let text = task_input.value
     let newNote = document.createElement('div');
     newNote.innerHTML = text
     list.appendChild(newNote)
-    return
-}
 
-add_task.addEventListener('click', ()=>{
-    add_task.style.display = 'none'
-    input_field.style.display = 'block'
-})
-
-add_btn.addEventListener('click',() => {
-    if (task_input.value == '') {
-       return alert('Please enter a note in the text field')
-    }
-    addNote(task_input.value)
+    projects[currentFolder].push(text)
     task_input.value = ''
     add_task.style.display = 'block'
     input_field.style.display = 'none'
-    
-})
+    return
+}
 
-folderAdd.addEventListener('click', () => {
-    projectInput.style.display = 'block'
-})
-
-add_btn_col.addEventListener('click',() => {
+function addFolder() {
     let input = document.getElementById('taskinput-clm').value
     let newFolder = document.createElement('div')
-    newFolder.className = 'projectss'
+    newFolder.className = `project ${input}`
     newFolder.innerHTML = input
     projectFolders.appendChild(newFolder)
     projectInput.style.display = 'none'
-})
 
+    currentFolder = input
+    projects[input] = []
+
+    removeNotes()
+
+}
+
+function removeNotes() {
+    while(list.firstChild){
+        list.firstChild.remove()
+    }
+}
+
+function reapplyNotes(folder) {
+    if (projects[folder] == undefined) {
+        return
+    }
+
+    let currentNotes = projects[folder]
+    for(let i = 0; i<currentNotes.length; i++){
+        let newNote = document.createElement('div');
+        newNote.innerHTML = currentNotes[i]
+        list.appendChild(newNote)
+    }
+}
+
+function getFolder(target) {
+    if(target.className.includes('project')) {
+        let folder = target.className.replace('project ','')
+        currentFolder = folder
+        removeNotes()
+        reapplyNotes(folder)
+    }
+}
+
+
+
+add_btn_col.addEventListener('click',addFolder)
+add_task.addEventListener('click', showInput)
+add_btn.addEventListener('click',addNote)
+folderAdd.addEventListener('click', () => {
+    projectInput.style.display = 'block'
+})
+projectFolders.addEventListener('click',(event) => {
+    let target = event.target
+    getFolder(target)
+})
 
